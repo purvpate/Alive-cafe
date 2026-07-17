@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Alive Cafe</title>
+<meta name="description" content="A look inside Alive Cafe — the room, the roast, the bakes, the people.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Bento grid: one hero cell + two stacked cells beside it,
+     then an even row below. Repeats as a block for more photos. */
+  .bento{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap:20px;
+    height:560px;
+    margin-bottom:20px;
+  }
+  .bento .b-hero{ grid-column:1; grid-row:1 / span 2; }
+  .bento .b-top{ grid-column:2; grid-row:1; }
+  .bento .b-mid{ grid-column:2; grid-row:2; }
+
+  .bento-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    height:320px;
+    margin-bottom:20px;
+  }
+
+  .bento-wide{ margin-bottom:20px; }
+  .bento-wide .art{ aspect-ratio:21/9; }
+
+  .gallery-item{ cursor:pointer; min-width:0; }
+  .gallery-item .art{ height:100%; width:100%; min-width:0; --ar:auto; }
+
+  @media (max-width:820px){
+    .bento{ grid-template-columns:1fr; grid-template-rows:none; height:auto; }
+    .bento .b-hero, .bento .b-top, .bento .b-mid{ grid-column:1; grid-row:auto; }
+    .bento .art{ aspect-ratio:4/3 !important; height:auto; }
+    .bento-row{ grid-template-columns:1fr; height:auto; }
+    .bento-row .art{ aspect-ratio:4/3; height:auto; }
+    .bento-wide .art{ aspect-ratio:4/3; }
+  }
+
+  #lightbox{
+    position:fixed; inset:0; z-index:200; background:rgba(10,14,9,0.92);
+    display:none; align-items:center; justify-content:center; padding:40px;
+    backdrop-filter:blur(6px);
+  }
+  #lightbox.open{ display:flex; }
+  .lightbox-box{ max-width:520px; width:100%; }
+  .lightbox-inner{
+    aspect-ratio:4/5; border-radius:20px; overflow:hidden; border:1px solid var(--line);
+    background:linear-gradient(150deg, var(--card), var(--void-2));
+  }
+  .lightbox-inner svg{ width:100%; height:100%; }
+  .lightbox-label{
+    margin-top:16px; font-family:var(--font-mono); font-size:13px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--paper); text-align:center;
+  }
+  .lightbox-close{
+    position:absolute; top:28px; right:32px; width:44px; height:44px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--paper); cursor:pointer;
+    font-size:18px; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{ border-color:var(--pulse); color:var(--pulse); }
+</style>
+</head>
+<body>
+<div id="loader"></div>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Alive<span class="dot">●</span>Cafe</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-solid" href="contact.html"><span class="long">Reserve a</span> Table</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Gallery</span>
+      <h1>A look around the room</h1>
+      <p class="lede">Tap any image to see it larger.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap reveal">
+
+      <!-- BENTO BLOCK 1: hero + two stacked + even row below -->
+      <div class="bento">
+        <div class="gallery-item b-hero">
+          <div class="art">
+          <!-- To use a real photo here: uncomment the line below and set the src.
+               Keep class="bg-img" exactly as-is — it makes the photo fill this box
+               and crop neatly, no matter the image's original size or shape.
+               You can delete the <svg>...</svg> illustration below it once a real photo is in. -->
+          <img class="bg-img" src="images/Morning light.jpg" alt="Describe the photo"> --><span class="cap">Morning light through the window</span></div>
+        </div>
+        <div class="gallery-item b-top">
+          <div class="art">
+          <img class="bg-img" src="images/Sun set.jpg" alt="Describe the photo"> <span class="cap">Sun Set on Cafe</span></div>
+        </div>
+        <div class="gallery-item b-mid">
+          <div class="art">
+           <img class="bg-img" src="images/The long table.jpg" alt="Describe the photo"> <span class="cap">The long communal table</span></div>
+        </div>
+      </div>
+
+      <div class="bento-row">
+        <div class="gallery-item">
+          <div class="art">
+           <img class="bg-img" src="images/Fresh bakes.jpg" alt="Describe the photo"> <span class="cap">Fresh bakes at 7am</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="art">
+          <img class="bg-img" src="images/clean, minimalist coffee setup.jpg" alt="Describe the photo"> <span class="cap">clean, minimalist coffee setup</span></div>
+        </div>
+      </div>
+
+      <!-- BENTO BLOCK 2 -->
+      <div class="bento">
+        <div class="gallery-item b-hero">
+          <div class="art">
+          <img class="bg-img" src="images/The kombucha shelf.avif" alt="Describe the photo"> <span class="cap">The kombucha shelf</span></div>
+        </div>
+        <div class="gallery-item b-top">
+          <div class="art">
+           <img class="bg-img" src="images/Behind the counter.webp" alt="Describe the photo"> <span class="cap">Behind the counter</span></div>
+        </div>
+        <div class="gallery-item b-mid">
+          <div class="art">
+           <img class="bg-img" src="images/Evening service.webp" alt="Describe the photo"> <span class="cap">Evening service</span></div>
+        </div>
+      </div>
+
+      <div class="bento-wide">
+        <div class="gallery-item">
+          <div class="art">
+           <img class="bg-img" src="images/Latte art in progress.webp" alt="Describe the photo"> <span class="cap">Latte art in progress</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <div class="lightbox-box">
+    <div class="lightbox-inner"></div>
+    <p class="lightbox-label"></p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">Alive<span class="dot">●</span>Cafe</div>
+        <p>Coffee, food and community built around one idea: keep everything alive — the ferments, the plants, the conversation.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>14 Riverside Lane</li>
+          <li>Vadodara, Gujarat</li>
+          <li>Open daily · 7am – 9pm</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <ul>
+          <li>hello@alivecafe.in</li>
+          <li>+91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alive Cafe. All rights reserved.</span>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Twitter">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp contact button (fixed on every page) -->
+<a id="whatsapp-float" class="whatsapp-float" href="https://wa.me/919016826748" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3C7.03 3 3 6.58 3 11c0 2.08.9 3.97 2.38 5.4-.15 1.2-.58 2.4-1.28 3.4a.5.5 0 00.52.78c1.7-.4 3.13-1.1 4.2-1.9A10.6 10.6 0 0012 19c4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="#fff"/>
+    <circle cx="8.2" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="12" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="15.8" cy="11" r="1.1" fill="#25D366"/>
+  </svg>
+</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Alive Cafe</title>
+<meta name="description" content="Coffee, ferments, food and bakes at Alive Cafe, Vadodara.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .menu-filter{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:44px; }
+  .menu-filter button{
+    font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em;
+    padding:11px 18px; border-radius:100px; border:1px solid var(--line); background:transparent;
+    color:var(--moss); cursor:pointer; transition:.2s;
+  }
+  .menu-filter button:hover{ color:var(--paper); border-color:var(--paper); }
+  .menu-filter button.active{ background:var(--pulse); color:var(--ink); border-color:var(--pulse); }
+
+  .menu-row{
+    display:flex; justify-content:space-between; gap:20px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .menu-row:last-child{ border-bottom:none; }
+  .menu-row .mi-name{ font-family:var(--font-display); font-size:20px; font-weight:700; }
+  .menu-row .mi-desc{ color:var(--moss); font-size:14.5px; margin-top:6px; max-width:52ch; }
+  .menu-row .mi-price{ font-family:var(--font-mono); font-size:15px; white-space:nowrap; padding-top:2px; }
+  .menu-group h3{
+    font-family:var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--pulse); margin-bottom:6px;
+  }
+  .menu-group{ margin-bottom:56px; }
+</style>
+</head>
+<body>
+<div id="loader"></div>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Alive<span class="dot">●</span>Cafe</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-solid" href="contact.html"><span class="long">Reserve a</span> Table</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Menu</span>
+      <h1>Seasonal, mostly local, always changing a little</h1>
+      <p class="lede">Prices in INR. Ask us what's newest — the ferments and bakes shift with what's ready that week.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="menu-filter" role="tablist" aria-label="Filter menu by category">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="coffee">Coffee &amp; Drinks</button>
+        <button data-filter="ferments">Ferments</button>
+        <button data-filter="food">Food</button>
+        <button data-filter="bakes">Bakes</button>
+      </div>
+
+      <!-- COFFEE & DRINKS -->
+      <div class="menu-group" data-cat="coffee">
+        <h3>Coffee &amp; Drinks</h3>
+        <div class="menu-row">
+          <div><div class="mi-name">House Filter</div><div class="mi-desc">Single-origin, changes weekly — ask what's pouring.</div></div>
+          <div class="mi-price">₹140</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Flat White</div><div class="mi-desc">Double ristretto, steamed whole milk.</div></div>
+          <div class="mi-price">₹190</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Turmeric Cardamom Latte</div><div class="mi-desc">Fresh turmeric, cardamom, oat milk, espresso.</div></div>
+          <div class="mi-price">₹220</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Cold Brew, Citrus Tonic</div><div class="mi-desc">18-hour cold brew topped with soda and orange peel.</div></div>
+          <div class="mi-price">₹210</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Ginger Masala Chai</div><div class="mi-desc">Hand-ground spice blend, steeped to order.</div></div>
+          <div class="mi-price">₹130</div>
+        </div>
+      </div>
+
+      <!-- FERMENTS -->
+      <div class="menu-group" data-cat="ferments">
+        <h3>Ferments</h3>
+        <div class="menu-row">
+          <div><div class="mi-name">Citrus Kombucha</div><div class="mi-desc">House-brewed, second ferment with seasonal citrus.</div></div>
+          <div class="mi-price">₹180</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Ginger Kefir Soda</div><div class="mi-desc">Water kefir, fresh ginger, lightly sweetened.</div></div>
+          <div class="mi-price">₹170</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Beet &amp; Apple Shrub</div><div class="mi-desc">Fermented vinegar shrub, sparkling water.</div></div>
+          <div class="mi-price">₹160</div>
+        </div>
+      </div>
+
+      <!-- FOOD -->
+      <div class="menu-group" data-cat="food">
+        <h3>Food</h3>
+        <div class="menu-row">
+          <div><div class="mi-name">Sourdough Avocado Toast</div><div class="mi-desc">Chili oil, pickled shallot, sesame, lime.</div></div>
+          <div class="mi-price">₹260</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Alive Grain Bowl</div><div class="mi-desc">Millet, roasted seasonal veg, tahini, herbs.</div></div>
+          <div class="mi-price">₹310</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Shakshuka</div><div class="mi-desc">Slow-cooked tomato, two eggs, sourdough on the side.</div></div>
+          <div class="mi-price">₹280</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Paneer &amp; Herb Toastie</div><div class="mi-desc">House paneer, garden herbs, chili butter.</div></div>
+          <div class="mi-price">₹240</div>
+        </div>
+      </div>
+
+      <!-- BAKES -->
+      <div class="menu-group" data-cat="bakes">
+        <h3>Bakes</h3>
+        <div class="menu-row">
+          <div><div class="mi-name">Almond Croissant</div><div class="mi-desc">Laminated daily, baked in small batches each morning.</div></div>
+          <div class="mi-price">₹140</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Banana Cardamom Loaf</div><div class="mi-desc">Slow-ripened bananas, whole cardamom.</div></div>
+          <div class="mi-price">₹120</div>
+        </div>
+        <div class="menu-row">
+          <div><div class="mi-name">Seeded Sourdough</div><div class="mi-desc">72-hour ferment, sold whole or by the slice.</div></div>
+          <div class="mi-price">₹160</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap card reveal" style="padding:56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; border-color:var(--pulse);">
+      <div>
+        <h2 style="font-size:clamp(26px,3.2vw,38px); max-width:18ch;">Menu changes with the seasons — come check what's new.</h2>
+      </div>
+      <a href="contact.html" class="btn btn-solid">Visit Us →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">Alive<span class="dot">●</span>Cafe</div>
+        <p>Coffee, food and community built around one idea: keep everything alive — the ferments, the plants, the conversation.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>14 Riverside Lane</li>
+          <li>Vadodara, Gujarat</li>
+          <li>Open daily · 7am – 9pm</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <ul>
+          <li>hello@alivecafe.in</li>
+          <li>+91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alive Cafe. All rights reserved.</span>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Twitter">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp contact button (fixed on every page) -->
+<a id="whatsapp-float" class="whatsapp-float" href="https://wa.me/919016826748" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3C7.03 3 3 6.58 3 11c0 2.08.9 3.97 2.38 5.4-.15 1.2-.58 2.4-1.28 3.4a.5.5 0 00.52.78c1.7-.4 3.13-1.1 4.2-1.9A10.6 10.6 0 0012 19c4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="#fff"/>
+    <circle cx="8.2" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="12" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="15.8" cy="11" r="1.1" fill="#25D366"/>
+  </svg>
+</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

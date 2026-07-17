@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Alive Cafe</title>
+<meta name="description" content="Visit, call or write to Alive Cafe in Vadodara.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .form-field{ margin-bottom:20px; }
+  .form-field label{
+    display:block; font-family:var(--font-mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--moss); margin-bottom:8px;
+  }
+  .form-field input, .form-field textarea{
+    width:100%; background:var(--void-2); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; color:var(--paper); font-family:var(--font-body); font-size:15px;
+    transition:border-color .2s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{ outline:none; border-color:var(--pulse); }
+  .form-field textarea{ min-height:130px; resize:vertical; }
+  .info-row{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .info-row:last-child{ border-bottom:none; }
+  .info-row .k{ font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--pulse); width:110px; flex:none; padding-top:2px; }
+  .map-block{
+    border-radius:20px; border:1px solid var(--line); overflow:hidden; position:relative;
+    aspect-ratio:16/10; background:linear-gradient(150deg, var(--card), var(--void-2));
+  }
+</style>
+</head>
+<body>
+<div id="loader"></div>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Alive<span class="dot">●</span>Cafe</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-solid" href="contact.html"><span class="long">Reserve a</span> Table</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Contact Us</span>
+      <h1>Come in, or drop us a line</h1>
+      <p class="lede">Questions about the menu, private bookings, or just want to check we're open — reach us here.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid-2 reveal" style="align-items:start; gap:56px;">
+
+      <!-- FORM -->
+      <div>
+        <h2 style="font-size:26px; margin-bottom:26px;">Send a message</h2>
+        <form id="contact-form">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="What's this about?">
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+         <button type="button" onclick="sendToWhatsApp()" class="btn btn-solid" style="width:100%; justify-content:center; padding:16px;">
+  Send Message
+</button>
+          <p class="moss" style="font-size:12.5px; margin-top:12px; font-family:var(--font-mono);">This is a demo form — connect it to your email or booking service to go live.</p>
+        </form>
+      </div>
+
+      <!-- INFO + MAP -->
+      <div>
+        <h2 style="font-size:26px; margin-bottom:26px;">Find us</h2>
+        <div class="info-row">
+          <div class="k">Address</div>
+          <div>14 Riverside Lane, near Sayaji Baug<br>Vadodara, Gujarat 390001</div>
+        </div>
+        <div class="info-row">
+          <div class="k">Hours</div>
+          <div>Mon – Sun: 7:00am – 9:00pm<br>Kitchen closes at 8:30pm</div>
+        </div>
+        <div class="info-row">
+          <div class="k">Phone</div>
+          <div>+91 98765 43210</div>
+        </div>
+        <div class="info-row">
+          <div class="k">Email</div>
+          <div>hello@alivecafe.in</div>
+        </div>
+
+        <div class="map-block" style="margin-top:28px;">
+          <svg viewBox="0 0 400 250" style="width:100%; height:100%;">
+            <rect width="400" height="250" fill="#171F14"/>
+            <path d="M0,180 C100,150 130,210 220,190 C300,172 340,140 400,150" stroke="#2B3A24" stroke-width="18" fill="none"/>
+            <path d="M0,90 L400,90" stroke="#232E1D" stroke-width="2"/>
+            <path d="M120,0 L120,250" stroke="#232E1D" stroke-width="2"/>
+            <path d="M280,0 L280,250" stroke="#232E1D" stroke-width="2"/>
+            <circle cx="200" cy="120" r="9" fill="#E88A3C"/>
+            <path d="M200,120 C200,95 215,80 215,80" stroke="#E88A3C" stroke-width="2" fill="none"/>
+            <circle cx="200" cy="120" r="18" stroke="#C9F24D" stroke-width="1.6" fill="none" opacity="0.7"/>
+          </svg>
+          <div class="cap" style="position:absolute; bottom:0; left:0;">14 Riverside Lane · map preview</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">Alive<span class="dot">●</span>Cafe</div>
+        <p>Coffee, food and community built around one idea: keep everything alive — the ferments, the plants, the conversation.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>14 Riverside Lane</li>
+          <li>Vadodara, Gujarat</li>
+          <li>Open daily · 7am – 9pm</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Say hello</h4>
+        <ul>
+          <li>hello@alivecafe.in</li>
+          <li>+91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alive Cafe. All rights reserved.</span>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Twitter">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp contact button (fixed on every page) -->
+<a id="whatsapp-float" class="whatsapp-float" href="https://wa.me/919016826748" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3C7.03 3 3 6.58 3 11c0 2.08.9 3.97 2.38 5.4-.15 1.2-.58 2.4-1.28 3.4a.5.5 0 00.52.78c1.7-.4 3.13-1.1 4.2-1.9A10.6 10.6 0 0012 19c4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="#fff"/>
+    <circle cx="8.2" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="12" cy="11" r="1.1" fill="#25D366"/>
+    <circle cx="15.8" cy="11" r="1.1" fill="#25D366"/>
+  </svg>
+</a>
+
+<script src="js/script.js"></script>
+
+<script>
+function sendToWhatsApp() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let subject = document.getElementById("subject").value;
+  let message = document.getElementById("message").value;
+
+  let phoneNumber = "+919016826748"; // 👉 replace with YOUR WhatsApp number
+
+  let text = `Hello Alive Cafe,%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Subject: ${subject}%0A
+Message: ${message}`;
+
+  let url = `https://wa.me/${phoneNumber}?text=${text}`;
+
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
